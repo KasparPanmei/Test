@@ -1,0 +1,164 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+body
+{
+    background-image: url(../Icons/herobg.png);
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-clip: border-box;
+    background-color: aliceblue;
+}
+.navbar
+{
+    background: transparent;
+}
+.navbar .navbar-menu a{
+    font-weight: bold;
+    font-size: large;
+    color: rgb(58, 56, 56);
+    position: relative;
+}
+.navbar .navbar-menu a::before{
+    position: absolute;
+    bottom: 5px;
+    content: '';
+    width: 0%;
+    height: 2px;
+    border-radius: 2px;
+    background-color: red;
+    transition: width 0.3s ease-in-out;
+}
+.navbar .navbar-menu a:hover::before
+{
+    width: 90%;
+    background-color: none;
+}
+
+.navbar a:hover
+{
+    color: red;
+    background:none;
+}
+.navbar .navbar-brand a img
+{
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+.navbar .navbar-burger span
+{
+    background-color: black !important;
+}
+.navbar-end, #user-info
+{
+    margin: 20px !important;
+}
+
+/* section hero */
+section{
+    height: 82vh;
+}
+section .welcomeContent 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+section .welcomeContent p
+{
+    color: rgb(95, 86, 86);
+    font-size: 20px;
+}
+section .welcomeContent h1{
+    font-size: 45px;
+    color: black;
+    font-weight: bolder;
+    text-transform: capitalize;
+}
+
+/* search bar */
+.suggestions {
+    position: absolute;
+    z-index: 10;
+    color: black;
+  }
+
+section .searchBar
+{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+section .searchBar img
+{
+    width: 20px;
+}
+
+.searchBar input
+{
+    color: black;
+    font-weight: bold;
+    width: 100% !important;
+}
+
+/* shake if same */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+  }
+
+  .shake {
+    animation: shake 0.4s ease-in-out;
+  }
+
+.login button
+{
+    border: 1px solid black;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: black;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.9)
+}
+.login a:hover::before
+{
+    width: 0% !important;
+}
+
+.booking
+{
+    background-color: aliceblue;
+    height: 100vh;
+}
+/* filter */
+.suggestions-box {
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    position: absolute;
+    background: white;
+    z-index: 1000;
+    display: none;
+  }
+  .suggestions-box div {
+    padding: 8px;
+    cursor: pointer;
+  }
+  .suggestions-box div:hover {
+    background-color: #eee;
+  }
+  

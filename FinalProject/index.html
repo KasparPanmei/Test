@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Bus Ticket Booking</title>
+    <link rel="shortcut icon" href="../Icons/bus.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="./index.html">
+            <img src="../Icons/bus.png" alt="">
+          </a>
+      
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item">
+              Home
+            </a>
+      
+            <a class="navbar-item">
+              Tickets
+            </a>
+      
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                Services
+              </a>
+              <div class="navbar-dropdown">
+                <a class="navbar-item is-selected">
+                  Bus Booking
+                </a>
+                <a class="navbar-item ">
+                  Light Vehical Booking
+                </a>
+                <a class="navbar-item">
+                  Bike Rental
+                </a>
+              </div>
+            </div>
+            <a class="navbar-item">
+                About
+              </a>
+          </div>
+      
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <!-- <div id="g_id_onload"
+                    data-client_id="165001984160-d5qh8a1mavev7d6es0l825t6ipf6dvoc.apps.googleusercontent.com"
+                    data-callback="handleCredentialResponse">
+                </div>
+                <div class="g_id_signin"
+                    data-type="standard"
+                    data-size="large"
+                    data-theme="outline"
+                    data-text="sign_in_with"
+                    data-shape="rectangular"
+                    data-logo_alignment="left">
+                </div>
+              </div> -->
+              <div class="login">
+                <a href="../BackEnd/adminLogin.php" target="_blank" rel="noopener noreferrer"><button type="button">Log In</button></a>
+              </div>
+              <div id="user-info" class="mt-6 text-center"></div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- Hero Section -->
+      <section id="Hero">
+        <div class="welcomeContent">
+            <p>Get Your Bus Tickets Here</p>
+            <h1>Find the Best Bus !</h1>
+        </div>
+        <div class="searchBar">
+            <div class="bg-white p-4 rounded-2xl shadow-md w-full max-w-4xl">
+                <form class="grid grid-cols-1 md:grid-cols-5 gap-3 items-center relative">
+                  
+                  <!-- From Input -->
+                  <div class="relative">
+                    <div class="flex items-center bg-gray-100 px-4 py-2 rounded-full">
+                      <input id="from" type="text" placeholder="From..." class="bg-transparent focus:outline-none w-full text-sm" autocomplete="off" />
+                    </div>
+                    <ul id="fromSuggestions" class="suggestions bg-white rounded shadow mt-1 hidden max-h-40 overflow-auto text-sm"></ul>
+                  </div>
+            
+                  <!-- Switch Icon -->
+                  <div class="hidden md:flex justify-center">
+                    <div class="bg-red-500 text-white p-2 rounded-full">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6m0 0a2 2 0 01-2 2h-2m0 0V8m-4 0H9a2 2 0 00-2 2v6m0 0a2 2 0 002 2h4m0 0V8" />
+                      </svg>
+                    </div>
+                  </div>
+            
+                  <!-- To Input -->
+                  <div class="relative">
+                    <div class="flex items-center bg-gray-100 px-4 py-2 rounded-full">
+                      <input id="to" type="text" placeholder="To..." class="bg-transparent focus:outline-none w-full text-sm" autocomplete="off" />
+                    </div>
+                    <ul id="toSuggestions" class="suggestions bg-white rounded shadow mt-1 hidden max-h-40 overflow-auto text-sm"></ul>
+                  </div>
+            
+                  <!-- Date Picker -->
+                  <div class="flex items-center bg-gray-100 px-4 py-2 rounded-full">
+                    <input type="datetime-local" class="bg-transparent focus:outline-none text-sm text-gray-500 w-full" />
+                  </div>
+                  <!-- Search Button -->
+                  <div>
+                    <button type="submit" id="searchButton" class="bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700 w-full">
+                      🔍
+                    </button>
+                  </div>
+                  <!-- Error Message -->
+                    <div id="errorMsg"  class="text-red-600 text-sm mt-3 font-medium hidden text-center">
+                        ❗ Same "From" and "To" not applicable
+                    </div>
+                </form>
+                <!-- Bus Results -->
+                  <div id="busResults" class="mt-6 space-y-6">
+                  </div>
+              </div>
+        </div>
+    </section>
+      
+</body>
+<script src="./main.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+</html>
